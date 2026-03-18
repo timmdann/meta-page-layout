@@ -1,0 +1,71 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.topics-bar {
+  background-color: $color-bg;
+  padding: 24px 0;
+
+  @include mobile {
+    padding: 12px 0;
+  }
+
+  &__inner {
+    @include mobile {
+      overflow-x: auto;
+      @include scrollbar-hidden;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: $sp-sm;
+
+    @include mobile {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+  }
+}
+
+.topic-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-xs;
+  padding: 10px 14px;
+  background-color: #0000000d;
+  border-radius: 18px;
+  font-size: $font-size-lg;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: $color-text;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: rgba($color-primary, 0.08);
+  }
+
+  &__icon {
+    color: $color-primary;
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-xs;
+    flex-shrink: 0;
+
+    svg:first-child,
+    svg:last-child {
+      width: 6px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    svg:nth-child(2) {
+      width: 2px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+  }
+}
