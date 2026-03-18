@@ -1,0 +1,16 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+
+  @include mobile {
+    width: 100vw;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

@@ -1,0 +1,83 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.secondary-nav {
+  background-color: $color-header-bg;
+  border-top: 1px solid $color-header-border;
+
+  &__inner {
+    padding-left: 32px;
+    padding-right: 32px;
+
+    @include mobile {
+      overflow-x: auto;
+      @include scrollbar-hidden;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: stretch;
+
+    @include mobile {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+  }
+
+  &__item {
+    position: relative;
+    flex-shrink: 0;
+
+    &:first-child .secondary-nav__link {
+      padding-left: 0;
+    }
+
+    &--active .secondary-nav__link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $color-active-indicator;
+      border-radius: 2px 2px 0 0;
+
+      @include mobile {
+        height: 4px;
+      }
+    }
+
+    &--active .secondary-nav__link {
+      color: $color-header-link-hover;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $sp-xs;
+    color: $color-logo;
+    font-size: $font-size-base;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+    padding: 24px $sp-md;
+    transition: color 0.2s;
+    white-space: nowrap;
+
+    @include mobile {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    &:hover {
+      color: $color-header-link-hover;
+    }
+
+    svg {
+      flex-shrink: 0;
+      color: $color-primary;
+    }
+  }
+}
